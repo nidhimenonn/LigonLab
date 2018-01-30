@@ -1,0 +1,15 @@
+  _LigonLab_ 
+Toolbox for working with/like Ethan Ligon
+
+* Introduction 
+This document is meant to both document and help set up a software
+environment which will allow you to use tools employed by Ethan Ligon
+(that's me) and various of his students and colleagues.  If you want
+to be able to work with me you may find this package useful.  However,
+you don't have to have a relationship with me to use this
+package---you may find it independently useful, or useful as a first
+step in replicating work done by others who have used this package.
+
+* Git
+This toolbox comes most naturally in the form of a =git= repository,
+available on-line at 
