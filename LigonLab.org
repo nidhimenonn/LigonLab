@@ -1,15 +1,76 @@
-  _LigonLab_ 
-Toolbox for working with/like Ethan Ligon
+  *LigonLab*: Toolbox for working with/like Ethan Ligon
 
-* Introduction 
-This document is meant to both document and help set up a software
+* Introduction
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: README
+  :EXPORT_TITLE: LigonLab: Toolbox for working with/like Ethan Ligon
+  :END:
+This project is meant to both document and help set up a software
 environment which will allow you to use tools employed by Ethan Ligon
 (that's me) and various of his students and colleagues.  If you want
-to be able to work with me you may find this package useful.  However,
+to be able to work with me you may find this toolbox useful.  However,
 you don't have to have a relationship with me to use this
 package---you may find it independently useful, or useful as a first
 step in replicating work done by others who have used this package.
 
-* Git
-This toolbox comes most naturally in the form of a =git= repository,
-available on-line at 
+*Nota Bene*: I think any of the code/setup in this toolbox should work on a wide
+variety of computers running =linux= or =macOS=.  If you're on a MS
+Windows machine you're not definitely not working with/like Ethan
+Ligon, and much of what follows may need to be changed or adapted if
+it's to work at all.
+
+** Getting Started
+   Follow instructions in [[file:./LigonLab.org::*Basic Setup]]  to install =git=, =emacs=, and
+   =Anaconda=, if these aren't already installed.  
+
+* Basic Setup
+** Git
+
+ This toolbox comes most naturally in the form of a =git= repository,
+ available on-line at https://github.com/ligon/LigonLab/.  If you don't
+ already have a =git= client installed on your machine, please follow
+ the instructions at
+ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git. 
+
+ I'll assume going forward that you've installed =git=, and are capable
+ of opening and functioning in a terminal.  With these two
+ prerequisites satisfied, at the command line you can check out the git
+ repository for LigonLab by:
+
+ #+begin_src bash :export code
+ cd $HOME
+ git clone https://github.com/ligon/LigonLab.git
+ #+end+src
+
+ This will install the repository (containing this file!) under your
+ home directory.  
+** Emacs
+  This document is written in =org-mode= format, a plaintext markup
+  language designed to work well with =emacs=.  If you don't have
+  =emacs= installed on your machine, you'll need it!  Some possible
+  sources (definitely not comprehensive):
+
+  - =Ubuntu/Linux= :: Execute from a shell:
+    #+begin_src bash :exports code
+      apt update && apt install emacs
+    #+end_src
+
+  - =macOS= :: Download and run the installer from
+               https://emacsformacosx.com/.
+               Note that =macOS= also comes with a version of =emacs=
+               installed that can (only?) be run in a terminal.  This
+               latter is probably not what you want.
+
+** Python
+   =Python= is my go-to programming language for a wide variety of
+   projects.  Much of my code leans heavily on packages designed for
+   various numerical applications.  Many of these, in turn, are
+   included in the easily-installed =Anaconda=, which can be obtained
+   from https://www.anaconda.com/download/.  I recommend 
+   =Anaconda= because it greatly simplifies package management for
+   =python= (which often relies on many different packages, with
+   different dependencies).
+
+   Toward the end of the =Anaconda= installation process, the
+   installation script may ask you if you want the =Ananconda=
+   directory added to your search path.  Say "Yes"!

@@ -1,7 +1,7 @@
 
 # Table of Contents
 
-
+1.  [Getting Started](#org49b7caa)
 
 This project is meant to both document and help set up a software
 environment which will allow you to use tools employed by Ethan Ligon
@@ -16,4 +16,12 @@ variety of computers running `linux` or `macOS`.  If you&rsquo;re on a MS
 Windows machine you&rsquo;re not definitely not working with/like Ethan
 Ligon, and much of what follows may need to be changed or adapted if
 it&rsquo;s to work at all.
+
+
+<a id="org49b7caa"></a>
+
+# Getting Started
+
+Follow instructions in <./LigonLab.md>  to install `git`, `emacs`, and
+`Anaconda`, if these aren&rsquo;t already installed.  
 
