@@ -20,7 +20,7 @@ Ligon, and much of what follows may need to be changed or adapted if
 it's to work at all.
 
 ** Getting Started
-   Follow instructions in [[file:./LigonLab.org::*Basic Setup]]  to install =git=, =emacs=, and
+   Follow instructions in =LigonLab.org:Basic Setup=  to install =git=, =emacs=, and
    =Anaconda=, if these aren't already installed.  
 
 * Basic Setup
