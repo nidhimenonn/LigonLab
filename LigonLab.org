@@ -40,10 +40,11 @@ it's to work at all.
  #+begin_src bash :export code
  cd $HOME
  git clone https://github.com/ligon/LigonLab.git
- #+end+src
+ #+end_src
 
  This will install the repository (containing this file!) under your
  home directory.  
+
 ** Emacs
   This document is written in =org-mode= format, a plaintext markup
   language designed to work well with =emacs=.  If you don't have
@@ -74,3 +75,4 @@ it's to work at all.
    Toward the end of the =Anaconda= installation process, the
    installation script may ask you if you want the =Ananconda=
    directory added to your search path.  Say "Yes"!
+
