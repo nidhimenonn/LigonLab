@@ -40,10 +40,13 @@ it's to work at all.
  #+begin_src bash :export code
  cd $HOME
  git clone https://github.com/ligon/LigonLab.git
- #+end+src
+ #+end_src
 
  This will install the repository (containing this file!) under your
  home directory.  
+*** TODO Basic Git Use
+
+
 ** Emacs
   This document is written in =org-mode= format, a plaintext markup
   language designed to work well with =emacs=.  If you don't have
@@ -60,7 +63,7 @@ it's to work at all.
                Note that =macOS= also comes with a version of =emacs=
                installed that can (only?) be run in a terminal.  This
                latter is probably not what you want.
-
+	       
 ** Python
    =Python= is my go-to programming language for a wide variety of
    projects.  Much of my code leans heavily on packages designed for
@@ -74,3 +77,4 @@ it's to work at all.
    Toward the end of the =Anaconda= installation process, the
    installation script may ask you if you want the =Ananconda=
    directory added to your search path.  Say "Yes"!
+
