@@ -32,20 +32,31 @@ it's to work at all.
  the instructions at
  https://git-scm.com/book/en/v2/Getting-Started-Installing-Git. 
 
- I'll assume going forward that you've installed =git=, and are capable
- of opening and functioning in a terminal.  With these two
- prerequisites satisfied, at the command line you can check out the git
- repository for LigonLab by:
+ You *could* clone LigonLab directly from the =url= above, but our
+ collective workflow instead is modeled on you working with a "fork".
+ See the discussion at https://help.github.com/articles/fork-a-repo/
+ if this idea is unfamiliar.
 
- #+begin_src bash :export code
+ I'll assume going forward that you've:
+   1. Installed =git=; 
+   2. Are capable of opening and functioning in a terminal;
+   3. Have a =github= account; supply your user name (replace "ligon") below
+      #+name: githubuser
+      | Your github user id: | ligon |
+   4. And have "forked" LigonLab on github.
+
+ With these prerequisites satisfied, at the command line you can check out the git
+ repository for LigonLab by executing:
+
+ #+begin_src bash :export code :var GITHUBUSER=githubuser[0,1]
  cd $HOME
- git clone https://github.com/ligon/LigonLab.git
+ git clone https://github.com/$GITHUBUSER/LigonLab.git
  #+end_src
 
- This will install the repository (containing this file!) under your
- home directory.  
-*** TODO Basic Git Use
+ This should install the repository (containing this file!) from your
+ forked version of LigonLab under your home directory.  
 
+*** TODO Basic Git Use
 
 ** Emacs
   This document is written in =org-mode= format, a plaintext markup
@@ -82,6 +93,11 @@ it's to work at all.
 * Getting Started
   You've got the various bits of software described above installed.
   Time to use them!
+** Basic =emacs= navigation
+   From within =emacs=, try either typing "C-h t" to start a basic
+   =emacs= tutorial.
+
+
 ** Hello world!
    Our goal here is simply to run a simple "Hello world!" program, but
    to do it from =emacs/orgmode=.  And since we're in the East Bay
