@@ -40,7 +40,7 @@ it's to work at all.
  #+begin_src bash :export code
  cd $HOME
  git clone https://github.com/ligon/LigonLab.git
- #+end+src
+ #+end_src
 
  This will install the repository (containing this file!) under your
  home directory.  
@@ -52,7 +52,8 @@ it's to work at all.
 
   - =Ubuntu/Linux= :: Execute from a shell:
     #+begin_src bash :exports code
-      apt update && apt install emacs
+    sudo apt update 
+    sudo apt install emacs
     #+end_src
 
   - =macOS= :: Download and run the installer from
@@ -74,3 +75,58 @@ it's to work at all.
    Toward the end of the =Anaconda= installation process, the
    installation script may ask you if you want the =Ananconda=
    directory added to your search path.  Say "Yes"!
+* Getting Started
+  You've got the various bits of software described above installed.
+  Time to use them!
+** Hello world!
+   Our goal here is simply to run a simple "Hello world!" program, but
+   to do it from =emacs/orgmode=.  And since we're in the East Bay
+   we'll modify it appropriately.
+ 
+   Before we start, we need to tell =emacs= it's okay to execute
+   various kinds of programs.  Here put a "t" as the argument for any
+   language you think you might want to execute.  Both =emacs-lisp=
+   and =python= should remain set, and also =shell= for good measure.
+   The others are optional.
+
+   Go ahead and execute this code block by putting your cursor inside
+   the block and pressing "C-c C-c".
+
+#+begin_src emacs-lisp :tangle yes
+  (org-babel-do-load-languages
+   (quote org-babel-load-languages)
+   (quote ((emacs-lisp . t)
+           (python . t)
+           (shell . t)
+           (org . t)
+           (dot . nil)
+           (ditaa . nil)
+           (R . nil)
+           (ipython . nil)
+           (octave . nil)
+           (gnuplot . nil)
+           (ledger . nil)
+           (asymptote . nil)
+           (latex . nil))))
+#+end_src
+
+   You'll probably want to execute the following 
+#+begin_src emacs-lisp :tangle yes
+  ; Do not prompt to confirm evaluation
+  ; This may be dangerous - make sure you understand the consequences
+  ; of setting this -- see the docstring for details
+  (setq org-confirm-babel-evaluate nil)
+#+end_src
+
+Now, with that language setup out of the way, do the same "C-c C-c" trick on the =hello= code block immediately below.
+
+#+name: hello  
+#+begin_src python :results output  
+print("Hell%c world!" % 'a')
+#+end_src
+
+Success should like a line reading "#+RESULTS: hello" and a greeting.
+
+** Importing =python= modules from Anaconda
+
+
