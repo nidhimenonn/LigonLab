@@ -34,8 +34,8 @@ it's to work at all.
 
  I'll assume going forward that you've installed =git=, and are capable
  of opening and functioning in a terminal.  With these two
- prerequisites satisfied, at the command line you can check out the git
- repository for LigonLab by:
+ prerequisites satisfied, fork the git repository for LigonLab.
+ At the command line you can check it out by:
 
  #+begin_src bash :export code
  cd $HOME
