@@ -1,7 +1,7 @@
 
 # Table of Contents
 
-1.  [Getting Started](#orga60b558)
+1.  [Getting Started](#org6f1d6a6)
 
 This project is meant to both document and help set up a software
 environment which will allow you to use tools employed by Ethan Ligon
@@ -18,10 +18,11 @@ Ligon, and much of what follows may need to be changed or adapted if
 it&rsquo;s to work at all.
 
 
-<a id="orga60b558"></a>
+<a id="org6f1d6a6"></a>
 
 # Getting Started
 
-Follow instructions in `LigonLab.org:Basic Setup`  to install `git`, `emacs`, and
-`Anaconda`, if these aren&rsquo;t already installed.  
+Fork this repository on `github`, and then follow instructions in
+`LigonLab.org:Basic Setup` to install `git`, `emacs`, and
+`Anaconda`, if these aren&rsquo;t already installed.
 
