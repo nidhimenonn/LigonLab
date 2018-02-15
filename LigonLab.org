@@ -33,11 +33,14 @@ it's to work at all.
  the instructions at
  https://git-scm.com/book/en/v2/Getting-Started-Installing-Git. 
 
- You *could* clone LigonLab directly from the =url= above, but our
+ I'll assume going forward that you've installed =git=, and are capable
+ of opening and functioning in a terminal.  With these two
+ prerequisites satisfied, fork the git repository for LigonLab.
+ Note that you *could* clone LigonLab directly from the =url= above, but our
  collective workflow instead is modeled on you working with a "fork".
  See the discussion at https://help.github.com/articles/fork-a-repo/
  if this idea is unfamiliar.
-
+ 
  I'll assume going forward that you've:
    1. Installed =git=; 
    2. Are capable of opening and functioning in a terminal;
