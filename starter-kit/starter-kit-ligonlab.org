@@ -1,0 +1,11 @@
+* Introduction
+  In this file we begin to set up things common to all LigonLab users.
+** magit
+   Tool for dealing with =git= repositories from =emacs=.
+ #+BEGIN_SRC emacs-lisp
+ (el-get-bundle! 'magit
+   (global-set-key (kbd "C-x g") 'magit-status))
+ #+END_SRC
+
+
+
