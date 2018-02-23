@@ -52,7 +52,7 @@ it's to work at all.
  With these prerequisites satisfied, at the command line you can check out the git
  repository for LigonLab by executing:
 
- #+begin_src bash :export code :var GITHUBUSER=githubuser[0,1]
+ #+begin_src sh :export code :var GITHUBUSER=githubuser[0,1]
  cd $HOME
  git clone https://github.com/$GITHUBUSER/LigonLab.git
  #+end_src
@@ -63,6 +63,7 @@ it's to work at all.
 *** TODO Basic Git Use
 
 ** Emacs
+*** Installation
   This document is written in =org-mode= format, a plaintext markup
   language designed to work well with =emacs=.  If you don't have
   =emacs= installed on your machine, you'll need it!  Some possible
@@ -79,16 +80,26 @@ it's to work at all.
                Note that =macOS= also comes with a version of =emacs=
                installed that can (only?) be run in a terminal.  This
                latter is probably not what you want.
-	       
+*** Setup	       
+    Here we'll consider how to configure the extraordinarily
+    configurable =emacs=.  By default =emacs= will look for
+    configuration information in a directory called =.emacs.d=,
+    located under your home directory.  The following effectively 
+    creates this directory for you.
+    #+begin_src sh :exports code
+    ln -s ./starter-kit $HOME
+    echo "***Now exit emacs and restart***"
+    #+end_src
+
 ** Python
-   =Python= is my go-to programming language for a wide variety of
-   projects.  Much of my code leans heavily on packages designed for
-   various numerical applications.  Many of these, in turn, are
-   included in the easily-installed =Anaconda=, which can be obtained
-   from https://www.anaconda.com/download/.  I recommend 
-   =Anaconda= because it greatly simplifies package management for
-   =python= (which often relies on many different packages, with
-   different dependencies).
+   Different problems call for different tools, but =python= is my
+   go-to programming language for a wide variety of projects.  Much of
+   my code leans heavily on packages designed for various numerical
+   applications.  Many of these, in turn, are included in the
+   easily-installed =Anaconda=, which can be obtained from
+   https://www.anaconda.com/download/.  I recommend =Anaconda= because
+   it greatly simplifies package management for =python= (which often
+   relies on many different packages, with different dependencies).
 
    Toward the end of the =Anaconda= installation process, the
    installation script may ask you if you want the =Ananconda=
@@ -101,6 +112,40 @@ it's to work at all.
    From within =emacs=, try either typing "C-h t" to start a basic
    =emacs= tutorial.
 
+** Packages for =emacs=
+   The word "emacs" is a sort of acronym, and the "e" stands for
+   "extensible."  One way in which it's easy to extend =emacs= is via
+   various kinds of configuration; another is to add various packages.  
+
+*** Emacs configuration
+    This section will help you to create a configuration file to tweak
+    and extend emacs.  We'll take it step by step.
+
+    1. Create a directory where this information will be kept, called
+       =.emacs.d=, located under your home directory.  Open a terminal
+       (shell) and supply the following command to create the directory.
+       #+begin_src sh 
+       mkdir ~/.emacs.d
+       #+end_src   
+*** Emacs packages
+**** Managing packages with el-get    
+     The following code installs (if necessary) and initializes a
+     package called =el-get= that... manages other packages.  
+
+         #+begin_src emacs-lisp :tangle ~/.emacs.d/ligonlab.el
+           (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+              (unless (require 'el-get nil 'noerror)
+                (with-current-buffer
+                    (url-retrieve-synchronously
+                     "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+                  (goto-char (point-max))
+                  (eval-print-last-sexp)))
+
+              (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+              (el-get 'sync)
+        #+end_src   
+
+        #+results:
 
 ** Hello world!
    Our goal here is simply to run a simple "Hello world!" program, but
@@ -114,65 +159,59 @@ it's to work at all.
    The others are optional.
 
    Go ahead and execute this code block by putting your cursor inside
-   the block and pressing "C-c C-c".
+   the block and pressing "C-c C-c".[fn:: Some versions of =emacs= may
+   require you to change =sh= to =shell= in the code block below.]
 
-#+begin_src emacs-lisp :tangle yes
-  (org-babel-do-load-languages
-   (quote org-babel-load-languages)
-   (quote ((emacs-lisp . t)
-           (python . t)
-           (sh . t)
-           (org . t)
-           (dot . nil)
-           (ditaa . nil)
-           (R . nil)
-           (ipython . nil)
-           (octave . nil)
-           (gnuplot . nil)
-           (ledger . nil)
-           (asymptote . nil)
-           (latex . nil))))
-#+end_src
+   #+begin_src emacs-lisp :tangle yes                                  
+   (org-babel-do-load-languages                                        
+    (quote org-babel-load-languages)                                   
+    (quote ((emacs-lisp . t)                                           
+            (python . t)                                               
+            (shell . t) ; If an error, trying commenting this line...  
+            ;(sh . t)   ; ...and uncommenting this one.                
+            (org . t)                                                  
+            (dot . nil)                                                
+            (ditaa . nil)                                              
+            (R . nil)                                                  
+            (ipython . nil)                                            
+            (octave . nil)                                             
+            (gnuplot . nil)                                            
+            (ledger . nil)                                             
+            (asymptote . nil)                                          
+            (latex . nil))))                                           
+   #+end_src                                                           
 
-#+RESULTS:
+   You'll probably want to execute the following, but consider that
+   this may create a security issue.
+   #+begin_src emacs-lisp :tangle yes
+   ; Do not prompt to confirm evaluation
+   ; This may be dangerous - make sure you understand the consequences
+   ; of setting this -- see the docstring for details
+   (setq org-confirm-babel-evaluate nil)
+   #+end_src
 
-   You'll probably want to execute the following 
-#+begin_src emacs-lisp :tangle yes
-  ; Do not prompt to confirm evaluation
-  ; This may be dangerous - make sure you understand the consequences
-  ; of setting this -- see the docstring for details
-  (setq org-confirm-babel-evaluate nil)
-#+end_src
+   Now, with that language setup out of the way, do the same "C-c C-c"
+   trick on the =hello= code block immediately below.
 
-#+RESULTS:
+   #+name: hello  
+   #+begin_src python :results output  
+   print("Hell%c world!" % 'a')
+   #+end_src
 
-Now, with that language setup out of the way, do the same "C-c C-c" trick on the =hello= code block immediately below.
-
-#+name: hello  
-#+begin_src python :results output  
-print("Hell%c world!" % 'a')
-#+end_src
-
-#+RESULTS: hello
-: Hella world!
-
-Success should like a line reading "#+RESULTS: hello" and a greeting.
+   Success should look like a line reading "#+RESULTS: hello" and a greeting.
 
 ** Importing =python= modules from Anaconda
    If you've installed =anaconda= as directed above, then on your
    computer you'll have available several related things, including
+
     - A =python= interpreter.  Test by executing (C-c C-c) the
       following code block---You should receive a greeting in
       response, preceded by an indication of what python binary is
       being called.  NB: *This path should include the string "anaconda"!*
       #+begin_src sh :results output
       echo "python called from `which python`."
-      python -c"print('Hella world')"
+      python -c"print('Hella world!')"
       #+end_src
-
-      #+results:
-      : python called from /usr/bin/python.
-      : Hella world
 
     - An interactive python shell called =ipython=.  Invoke this from
       the command line for a convenient way to use python.
@@ -186,6 +225,6 @@ Success should like a line reading "#+RESULTS: hello" and a greeting.
       #+end_src
 
       #+results:
-      : /home/ligon/anaconda3/lib/python3.6/site-packages/pandas/__init__.py
 
       *Once again this path should include the string "anaconda".*
+
