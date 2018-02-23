@@ -23,7 +23,7 @@ it's to work at all.
    Fork this repository on =github=, and then follow instructions in
    =LigonLab.org:Basic Setup= to install =git=, =emacs=, and
    =Anaconda=, if these aren't already installed.
-
+   
 * Basic Setup
 ** Git
 
@@ -87,7 +87,7 @@ it's to work at all.
     located under your home directory.  The following effectively 
     creates this directory for you.
     #+begin_src sh :exports code
-    ln -s ./starter-kit $HOME
+    ln -s ./starter-kit/ $HOME/.emacs.d
     echo "***Now exit emacs and restart***"
     #+end_src
 
@@ -124,12 +124,7 @@ it's to work at all.
     This section will help you to create a configuration file to tweak
     and extend emacs.  We'll take it step by step.
 
-    1. Create a directory where this information will be kept, called
-       =.emacs.d=, located under your home directory.  Open a terminal
-       (shell) and supply the following command to create the directory.
-       #+begin_src sh 
-       mkdir ~/.emacs.d
-       #+end_src   
+
 *** Emacs packages
 **** Managing packages with el-get    
      The following code installs (if necessary) and initializes a

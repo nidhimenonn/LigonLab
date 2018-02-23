@@ -85,6 +85,7 @@ recipes, and then to install a series of packages (=buffer-move=, =magit=
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-x g") 'magit-status)
 #+END_SRC
+
 * Fix for problem with exec-path on MacOS
   Emacs on MacOS has an issue in setting the path it searches for
   executables correctly.  Here's an emacs module that purports to
