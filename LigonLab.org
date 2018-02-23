@@ -62,6 +62,16 @@ it's to work at all.
 
 *** TODO Basic Git Use
 
+How to fork a file from LigonLab to your personal github fork:
+   1. Open LigonLab from your profile
+   2. Click on Enable Compare on the right of the window
+   3. Click on "switching the base"
+   4. Click on "Create Pull Request"
+   5. Send yourself a message and send
+   6. Merge the pull request.
+   7. On your terminal, check git status, check git diff, git pull
+
+
 ** Emacs
 *** Installation
   This document is written in =org-mode= format, a plaintext markup
