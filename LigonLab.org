@@ -23,7 +23,7 @@ it's to work at all.
    Fork this repository on =github=, and then follow instructions in
    =LigonLab.org:Basic Setup= to install =git=, =emacs=, and
    =Anaconda=, if these aren't already installed.
-
+   
 * Basic Setup
 ** Git
 
@@ -87,9 +87,12 @@ it's to work at all.
     located under your home directory.  The following effectively 
     creates this directory for you.
     #+begin_src sh :exports code
-    ln -s ./starter-kit $HOME
+    ln -s ./starter-kit/ $HOME/.emacs.d
     echo "***Now exit emacs and restart***"
     #+end_src
+
+    #+RESULTS:
+    : ***Now exit emacs and restart***
 
 ** Python
    Different problems call for different tools, but =python= is my
@@ -121,12 +124,7 @@ it's to work at all.
     This section will help you to create a configuration file to tweak
     and extend emacs.  We'll take it step by step.
 
-    1. Create a directory where this information will be kept, called
-       =.emacs.d=, located under your home directory.  Open a terminal
-       (shell) and supply the following command to create the directory.
-       #+begin_src sh 
-       mkdir ~/.emacs.d
-       #+end_src   
+
 *** Emacs packages
 **** Managing packages with el-get    
      The following code installs (if necessary) and initializes a
@@ -167,8 +165,8 @@ it's to work at all.
     (quote org-babel-load-languages)                                   
     (quote ((emacs-lisp . t)                                           
             (python . t)                                               
-            (shell . t) ; If an error, trying commenting this line...  
-            ;(sh . t)   ; ...and uncommenting this one.                
+            ;(shell . t) ; If an error, trying commenting this line...  
+            (sh . t)   ; ...and uncommenting this one.                
             (org . t)                                                  
             (dot . nil)                                                
             (ditaa . nil)                                              
@@ -178,8 +176,10 @@ it's to work at all.
             (gnuplot . nil)                                            
             (ledger . nil)                                             
             (asymptote . nil)                                          
-            (latex . nil))))                                           
+            (latex . nil))))
    #+end_src                                                           
+
+   #+RESULTS:
 
    You'll probably want to execute the following, but consider that
    this may create a security issue.
@@ -189,6 +189,8 @@ it's to work at all.
    ; of setting this -- see the docstring for details
    (setq org-confirm-babel-evaluate nil)
    #+end_src
+
+   #+RESULTS:
 
    Now, with that language setup out of the way, do the same "C-c C-c"
    trick on the =hello= code block immediately below.
