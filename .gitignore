@@ -218,3 +218,17 @@ TSWLatexianTemp*
 
 # expex forward references with \gathertags
 *-tags.tex
+
+# Additional local things to ignore     
+el-get/
+elpa/
+backups/
+starter-kit/.ido.last
+starter-kit/ido.last
+starter-kit/network-security.data
+starter-kit/custom.el
+starter-kit/*.el
+starter-kit/.smex*
+starter-kit/smex*
+starter-kit/ac-comphist.dat
+*~
