@@ -62,8 +62,14 @@
   executables correctly.  Here's an emacs module that purports to
   solve that problem.
 #+BEGIN_SRC emacs-lisp
-(el-get-bundle elpa:exec-path-from-shell)
+(el-get-bundle elpa:exec-path-from-shell
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
 #+END_SRC
+
+#+RESULTS:
+
 * Install org-contrib
   Note that this should come /after/ setup of [[*ELPA Package Archives][ELPA Package Archives]]
 #+BEGIN_SRC emacs-lisp
