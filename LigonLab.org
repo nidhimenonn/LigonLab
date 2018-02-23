@@ -91,6 +91,9 @@ it's to work at all.
     echo "***Now exit emacs and restart***"
     #+end_src
 
+    #+RESULTS:
+    : ***Now exit emacs and restart***
+
 ** Python
    Different problems call for different tools, but =python= is my
    go-to programming language for a wide variety of projects.  Much of
@@ -167,8 +170,8 @@ it's to work at all.
     (quote org-babel-load-languages)                                   
     (quote ((emacs-lisp . t)                                           
             (python . t)                                               
-            (shell . t) ; If an error, trying commenting this line...  
-            ;(sh . t)   ; ...and uncommenting this one.                
+            ;(shell . t) ; If an error, trying commenting this line...  
+            (sh . t)   ; ...and uncommenting this one.                
             (org . t)                                                  
             (dot . nil)                                                
             (ditaa . nil)                                              
@@ -178,8 +181,10 @@ it's to work at all.
             (gnuplot . nil)                                            
             (ledger . nil)                                             
             (asymptote . nil)                                          
-            (latex . nil))))                                           
+            (latex . nil))))
    #+end_src                                                           
+
+   #+RESULTS:
 
    You'll probably want to execute the following, but consider that
    this may create a security issue.
@@ -189,6 +194,8 @@ it's to work at all.
    ; of setting this -- see the docstring for details
    (setq org-confirm-babel-evaluate nil)
    #+end_src
+
+   #+RESULTS:
 
    Now, with that language setup out of the way, do the same "C-c C-c"
    trick on the =hello= code block immediately below.
