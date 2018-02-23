@@ -1,11 +1,71 @@
-* Introduction
-  In this file we begin to set up things common to all LigonLab users.
+* Starter kit bits to load for basic LigonLab use
+  Here indicate starter-kits to load by default.
+  #+begin_src emacs-lisp
+  (starter-kit-load "python") ;; Breaks w/emacs24?; see http://python.6.n6.nabble.com/problem-with-byte-code-td2012559.html for possible work-around
+  (starter-kit-load "org")
+  #+end_src
+
+* Source block execution
+   #+begin_src emacs-lisp :tangle yes                                  
+   (org-babel-do-load-languages                                        
+    (quote org-babel-load-languages)                                   
+    (quote ((emacs-lisp . t)                                           
+            (python . t)                                               
+            (shell . t) ; If an error, trying commenting this line...  
+            ;(sh . t)   ; ...and uncommenting this one.                
+            (org . t)                                                  
+            (dot . nil)                                                
+            (ditaa . nil)                                              
+            (R . nil)                                                  
+            (ipython . nil)                                            
+            (octave . nil)                                             
+            (gnuplot . nil)                                            
+            (ledger . nil)                                             
+            (asymptote . nil)                                          
+            (latex . nil))))                                           
+   #+end_src                                                           
+
+   You'll probably want to execute the following, but consider that
+   this may create a security issue.
+   #+begin_src emacs-lisp :tangle yes
+   ; Do not prompt to confirm evaluation
+   ; This may be dangerous - make sure you understand the consequences
+   ; of setting this -- see the docstring for details
+   (setq org-confirm-babel-evaluate nil)
+   #+end_src
+
+
+* Further mussing with =el-get=
+#+BEGIN_SRC emacs-lisp
+(require 'el-get-elpa)
+(el-get-elpa-build-local-recipes)
+#+END_SRC
+
+#+RESULTS:
+
+* Settings & Initialization of other basic packages 
 ** magit
    Tool for dealing with =git= repositories from =emacs=.
  #+BEGIN_SRC emacs-lisp
  (el-get-bundle! 'magit
    (global-set-key (kbd "C-x g") 'magit-status))
  #+END_SRC
-
-
-
+** ELPA Package Archives
+ #+BEGIN_SRC emacs-lisp :tangle yes
+ (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
+ (add-to-list 'package-archives
+              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+ (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's
+ #+END_SRC
+* Fix for problem with exec-path on MacOS
+  Emacs on MacOS has an issue in setting the path it searches for
+  executables correctly.  Here's an emacs module that purports to
+  solve that problem.
+#+BEGIN_SRC emacs-lisp
+(el-get-bundle elpa:exec-path-from-shell)
+#+END_SRC
+* Install org-contrib
+  Note that this should come /after/ setup of [[*ELPA Package Archives][ELPA Package Archives]]
+#+BEGIN_SRC emacs-lisp
+(el-get-bundle elpa:org-plus-contrib)
+#+END_SRC
