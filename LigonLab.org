@@ -121,7 +121,7 @@ it's to work at all.
    (quote org-babel-load-languages)
    (quote ((emacs-lisp . t)
            (python . t)
-           (shell . t)
+           (sh . t)
            (org . t)
            (dot . nil)
            (ditaa . nil)
@@ -134,6 +134,8 @@ it's to work at all.
            (latex . nil))))
 #+end_src
 
+#+RESULTS:
+
    You'll probably want to execute the following 
 #+begin_src emacs-lisp :tangle yes
   ; Do not prompt to confirm evaluation
@@ -142,12 +144,17 @@ it's to work at all.
   (setq org-confirm-babel-evaluate nil)
 #+end_src
 
+#+RESULTS:
+
 Now, with that language setup out of the way, do the same "C-c C-c" trick on the =hello= code block immediately below.
 
 #+name: hello  
 #+begin_src python :results output  
 print("Hell%c world!" % 'a')
 #+end_src
+
+#+RESULTS: hello
+: Hella world!
 
 Success should like a line reading "#+RESULTS: hello" and a greeting.
 
@@ -158,13 +165,13 @@ Success should like a line reading "#+RESULTS: hello" and a greeting.
       following code block---You should receive a greeting in
       response, preceded by an indication of what python binary is
       being called.  NB: *This path should include the string "anaconda"!*
-      #+begin_src bash :results output
+      #+begin_src sh :results output
       echo "python called from `which python`."
       python -c"print('Hella world')"
       #+end_src
 
       #+results:
-      : python called from /home/ligon/anaconda3/bin/python
+      : python called from /usr/bin/python.
       : Hella world
 
     - An interactive python shell called =ipython=.  Invoke this from
