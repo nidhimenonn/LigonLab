@@ -34,29 +34,57 @@
    (setq org-confirm-babel-evaluate nil)
    #+end_src
 
-
-* Further mussing with =el-get=
-#+BEGIN_SRC emacs-lisp
-(require 'el-get-elpa)
-(el-get-elpa-build-local-recipes)
-#+END_SRC
-
-#+RESULTS:
-
-* Settings & Initialization of other basic packages 
-** magit
-   Tool for dealing with =git= repositories from =emacs=.
- #+BEGIN_SRC emacs-lisp
- (el-get-bundle! 'magit
-   (global-set-key (kbd "C-x g") 'magit-status))
- #+END_SRC
-** ELPA Package Archives
+* ELPA Package Archives
  #+BEGIN_SRC emacs-lisp :tangle yes
  (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
  (add-to-list 'package-archives
               '("melpa-stable" . "https://stable.melpa.org/packages/") t)
  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's
  #+END_SRC
+
+* Further mussing with =el-get=
+The following uses the =el-get= mechanism to initialize a set of
+recipes, and then to install a series of packages (=buffer-move=, =magit=
+#+BEGIN_SRC emacs-lisp
+(require 'el-get-elpa)
+(el-get-elpa-build-local-recipes)
+
+(setq
+ el-get-sources
+ '((:name buffer-move			; have to add your own keys
+	  :after (progn
+		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
+		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
+		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
+		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
+
+   (:name magit				; git meet emacs, and a binding
+	  :type elpa
+	  :depends (dash emacs-async ghub let-alist magit-popup with-editor))))
+
+(setq
+ my:el-get-packages
+ '(el-get				; el-get is self-hosting
+   switch-window			; takes over C-x o
+   auto-complete			; complete as you type with overlays
+   yasnippet 				; powerful snippet mode
+   ;zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
+   color-theme		                ; nice looking emacs
+   color-theme-tango))	                ; check out color-theme-solarized
+
+(setq my:el-get-packages
+      (append
+       my:el-get-packages
+       (loop for src in el-get-sources collect (el-get-source-name src))))
+
+;; install new packages and init already installed packages
+(el-get 'sync my:el-get-packages)
+
+#+END_SRC
+* Magit-status global key
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x g") 'magit-status)
+#+END_SRC
 * Fix for problem with exec-path on MacOS
   Emacs on MacOS has an issue in setting the path it searches for
   executables correctly.  Here's an emacs module that purports to
