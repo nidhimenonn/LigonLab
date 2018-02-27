@@ -6,12 +6,11 @@
 ;; This is the first thing to get loaded.
 ;;
 
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-;(package-initialize)
+(package-initialize)
 
 (server-start)
 
@@ -36,7 +35,7 @@
     (eval-print-last-sexp)))
 
 ;; FIXME!  Directory may not exist
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(add-to-list 'el-get-recipe-path (expand-file-name "~/.emacs.d/el-get/el-get-user/recipes"))
 (el-get 'sync)
 
 ;;load the starter kit from the `after-init-hook' so all packages are loaded

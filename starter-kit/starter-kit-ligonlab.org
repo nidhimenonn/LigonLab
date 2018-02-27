@@ -66,6 +66,7 @@ recipes, and then to install a series of packages (=buffer-move=, =magit=
  my:el-get-packages
  '(el-get				; el-get is self-hosting
    switch-window			; takes over C-x o
+   elpy
    auto-complete			; complete as you type with overlays
    yasnippet 				; powerful snippet mode
    ;zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
@@ -103,3 +104,12 @@ recipes, and then to install a series of packages (=buffer-move=, =magit=
 #+BEGIN_SRC emacs-lisp
 (el-get-bundle elpa:org-plus-contrib)
 #+END_SRC
+* Some =org-mode= additions
+** Use inline tasks
+#+begin_src emacs-lisp
+(require 'org-inlinetask)
+#+end_src
+** Setup org-drawers
+#+begin_src emacs-lisp
+(setq org-drawers (quote ("PROPERTIES" "LOGBOOK" "SETUP")))
+#+end_src
