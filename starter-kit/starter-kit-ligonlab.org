@@ -60,7 +60,7 @@ recipes, and then to install a series of packages (=buffer-move=, =magit=
 
    (:name magit				; git meet emacs, and a binding
 	  :type elpa
-	  :depends (dash emacs-async ghub let-alist magit-popup with-editor))))
+	  :depends (dash emacs-async ghub let-alist magit-popup with-editor async))))
 
 (setq
  my:el-get-packages
