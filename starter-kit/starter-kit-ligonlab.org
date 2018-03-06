@@ -1,4 +1,4 @@
-* Starter kit bits to load for basic LigonLab use
+* Other starter kit bits to load for basic LigonLab use
   Here indicate starter-kits to load by default.
   #+begin_src emacs-lisp
   (starter-kit-load "python") ;; Breaks w/emacs24?; see http://python.6.n6.nabble.com/problem-with-byte-code-td2012559.html for possible work-around
@@ -56,16 +56,18 @@ recipes, and then to install a series of packages (=buffer-move=, =magit=
 		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
-		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
+		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))))
 
-   (:name magit				; git meet emacs, and a binding
-	  :type elpa
-	  :depends (dash emacs-async ghub let-alist magit-popup with-editor))))
+;   (:name magit				; git meet emacs, and a binding
+;	  :type elpa
+;          :before (global-set-key (kbd "C-x g") magit-status)
+;	  :depends (dash emacs-async ghub let-alist magit-popup with-editor async))))
 
 (setq
  my:el-get-packages
  '(el-get				; el-get is self-hosting
    switch-window			; takes over C-x o
+   magit
    elpy
    auto-complete			; complete as you type with overlays
    yasnippet 				; powerful snippet mode
@@ -84,6 +86,7 @@ recipes, and then to install a series of packages (=buffer-move=, =magit=
 #+END_SRC
 * Magit-status global key
 #+BEGIN_SRC emacs-lisp
+(require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
 #+END_SRC
 * Fix for problem with exec-path on MacOS

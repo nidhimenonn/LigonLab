@@ -25,7 +25,7 @@
 ;(require 'org-compat)
 
 ;; Install (if necessary) & initialize el-get
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/el-get/el-get"))
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -34,8 +34,12 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
-;; FIXME!  Directory may not exist
-(add-to-list 'el-get-recipe-path (expand-file-name "~/.emacs.d/el-get/el-get-user/recipes"))
+;; Directory may not exist, in which case create it.
+(let ((dir (file-name-directory (expand-file-name "~/.emacs.d/el-get/el-get-user/recipes/"))))
+       (unless (file-directory-p dir)
+         (make-directory dir))
+  (add-to-list 'el-get-recipe-path dir))
+
 (el-get 'sync)
 
 ;;load the starter kit from the `after-init-hook' so all packages are loaded
